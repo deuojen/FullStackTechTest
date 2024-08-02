@@ -2,22 +2,22 @@
 
 # Overview
 
-This app that stores information about medical professionals, such as doctors. Written in C# .NET app to build upon, along with seed data for a MySQL database.
-To seed the database use seed.sql file then execute 1-migrate.sql file for new feature implemantation 
+This app stores information about medical professionals, such as doctors. Written in C# .NET app to build upon, along with seed data for a MySQL database.
+To seed the database use seed.sql file then execute 1-migrate.sql file for new feature implementation 
 
 ## Feature 1: Import data
 
-Implement an import feature to parse, validate, and store new entries. Sample json file exists in root directory.
+Implement an import feature to parse, validate, and store new entries. Sample JSON file exists in the root directory.
 
 ### User stories
 
-- As an admin, I want to import users from an external source so that I can migrate new users into our app.
+- As an admin, I want to import users from an external source to migrate new users into our app.
 
 ### Changes
 
 - No database change
 - Insert new route/controller
-- Add import data repository for check duplicate data and insert or ignore.
+- Add import data repository to check duplicate data and insert or ignore.
 
 
 ### Acceptance criteria:
@@ -54,6 +54,6 @@ A requirement to record each doctor's medical specialities. Example specialities
 
 ### Changes
 
-- Database change for add 2 new tables and seed data
-- Insert new route/controller for specialties
+- Database change for adding 2 new tables and seed data
+- Insert new route/controller for specialities
 - Add speciality assignment section under person edit.
