@@ -1,24 +1,23 @@
 # FourteenFish - Full Stack Technical Assessment
 
-## Testing Goals
+# Overview
 
-We are testing your ability to build upon an existing application, underpinned by good software engineering practices that demonstrate a broad range of skills within a full stack.
+This app that stores information about medical professionals, such as doctors. Written in C# .NET app to build upon, along with seed data for a MySQL database.
 
-Your solution does not need to be a complete application but should showcase your approach to software engineering and demonstrate that you understand how to build software.
+### New Feature 1: Import data
 
-## The Task
-
-You are working on an existing app that stores information about medical professionals, such as doctors. You have been given a barebones C# .NET app to build upon, along with seed data for a MySQL database.
-
-Currently, the app has a simple home page to display a list of the stored records. Individual records can be selected to view/edit specific details. The app works, but maybe it's not that great - please make any observations and improvements as you see fit.
-
-### Feature 1: Import data
-
-Your task is to implement an import feature to parse, validate, and store new entries. We have provided some sample data for you to work with in the expected JSON format. Here are user stories and acceptance criteria such a feature should satisfy:
+Implement an import feature to parse, validate, and store new entries. Sample json file exists in root directory.
 
 #### User stories
 
 - As an admin, I want to import users from an external source so that I can migrate new users into our app.
+
+#### Changes
+
+- No database change
+- Insert new route/controller
+- Add import data repository for check duplicate data and insert or ignore.
+
 
 #### Acceptance criteria:
 

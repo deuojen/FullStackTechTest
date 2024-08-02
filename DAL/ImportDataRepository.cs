@@ -10,6 +10,13 @@ namespace DAL
 {
     public class ImportDataRepository : IImportDataRepository
     {
+
+        /// <summary>
+        /// Only inserts GMC value not exist in the people's table
+        /// If new person does not have address details insert empty data with current personId.
+        /// </summary>
+        /// <param name="persons"></param>
+        /// <returns></returns>
         public async Task<int> Insert(List<PersonWithAddress> persons)
         {
             var result = 0;

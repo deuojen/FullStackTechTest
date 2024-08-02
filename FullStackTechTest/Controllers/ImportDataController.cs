@@ -28,6 +28,22 @@ public class ImportDataController : Controller
         return View(model);
     }
 
+    /// <summary>
+    /// Import Data allows to users to insert data from json file
+    /// Validations: 
+    ///     1. Empty file should warn to user to can't upload
+    ///     2. Non Json files should warn to user to can't process
+    ///     3. Wrong Json formats should warn to user to can't process
+    ///     
+    /// We have to check unique people by their GMC number, 
+    /// If same GMC number is exists ignore insert for person and address
+    /// Same process for current import, if person inserted already ignore insert again
+    /// 
+    /// If person address not exists in the file add empty data so on edit page we can update it
+    /// 
+    /// </summary>
+    /// <param name="postedFile"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> Index(IFormFile postedFile)
     {
@@ -52,11 +68,19 @@ public class ImportDataController : Controller
                 result.AppendLine(await reader.ReadLineAsync());
         }
 
-        var persons = JsonConvert.DeserializeObject<List<PersonWithAddress>>(result.ToString());
+        try
+        {
+            var persons = JsonConvert.DeserializeObject<List<PersonWithAddress>>(result.ToString());
 
-        model = await IndexViewModel.InsertAsync(_importDataRepository, persons);
+            model = await IndexViewModel.InsertAsync(_importDataRepository, persons);
 
-        ViewData["Message"] = $"File successfully processed. Duplicate data ignored and {model.InsertPeopleCount} of {persons.Count} people imported.";
+            ViewData["Message"] = $"File successfully processed. Duplicate data ignored and {model.InsertPeopleCount} of {persons.Count} people imported.";
+        }
+        catch (Exception)
+        {
+            ModelState.AddModelError("UploadFile", "File content is not suitable! Please upload valid json file.");
+            return View(model);
+        }
 
         return View(model);
     }
