@@ -7,6 +7,7 @@ namespace DAL;
 
 public class AddressRepository : IAddressRepository
 {
+    // One to one relation for person to address
     public async Task<Address> GetForPersonIdAsync(int personId)
     {
         var address = new Address();
