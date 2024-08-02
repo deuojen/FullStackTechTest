@@ -1,0 +1,17 @@
+﻿@model FullStackTechTest.Models.ImportData.IndexViewModel
+
+@{
+    ViewData["Title"] = "Import Data";
+}
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data" asp-controller="ImportData"
+          asp-action="Index">
+        <span>Select File:</span>
+        <input type="file" name="postedFile" />
+        <input type="submit" value="Upload" />
+        <br />
+        <span asp-validation-for="UploadFile" class="text-danger"></span>
+        <span>@Html.Raw(ViewBag.Message)</span>
+    </form>
+</div>
